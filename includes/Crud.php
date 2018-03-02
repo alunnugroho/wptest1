@@ -41,7 +41,8 @@ class Crud
 			$result['error'] = $e->getMessage();
 		}
 
-		wp_send_json($result);
-
+		wp_send_json(json_encode($result));
 	}
 }
+
+//$crud = new Crud();

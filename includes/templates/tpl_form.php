@@ -18,3 +18,33 @@
         <button type="submit" class="btn btn-success">Submit</button>
     </div>
 </form>
+
+<script>
+    var ajaxUrl = '<?php echo admin_url('admin-ajax.php'); ?>';
+
+    jQuery(document).ready(function($) {
+        var form = $("#contact-us-form");
+        form.submit(function(e) {
+            e.preventDefault();
+            var xdata = {
+                action: 'contact_us_save',
+                contact_name: $("#contact-name").val(),
+                contact_email: $("#contact-email").val(),
+                contact_message: $("#contact-message").val()
+            };
+
+            $.ajax({
+                url: ajaxUrl,
+                type: 'post',
+                dataType: 'json',
+                data: xdata,
+                success: function(response) {
+
+                },
+                error: function(response) {
+
+                }
+            });
+        });
+    })
+</script>
